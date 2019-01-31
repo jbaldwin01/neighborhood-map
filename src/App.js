@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
+import MainPage from './components/pages/MainPage'
 import './App.css';
 
 class App extends Component {
 
   state = {
-    venues: []
+    venues: [],
+    markers: [],
+    showingLocations: [],
+    map: null
   }
 
   componentDidMount() {
     this.getVenues()
+  }
+
+  updateLocations = (showingLocations) => {
+    this.setState({ showingLocations })
   }
 
   /*
@@ -46,32 +55,54 @@ class App extends Component {
   initMap = () => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: 41.7658, lng: -72.6734},
-      zoom: 15
+      zoom: 13
     })
+    this.setState({ map })
 
-    this.state.venues.map(mapVenue => {
+    const infoWindow = new window.google.maps.InfoWindow()
+    
+    // Add location markers to the map
+    let mapMarkers = this.state.venues.map(mapVenue => {
       let contentString = `${mapVenue.venue.name}<p/>${(mapVenue.venue.location.address) || 'Address not available'}`
-      let infoWindow = new window.google.maps.InfoWindow({
-        content: contentString
-      })
       
       let marker = new window.google.maps.Marker({
+        id: mapVenue.venue.id,
         position: {lat: mapVenue.venue.location.lat, lng: mapVenue.venue.location.lng},
         title: mapVenue.venue.name,
         map: map
       })
 
-      marker.addListener('click', () => infoWindow.open(map, marker))
+      // Marker clicked
+      // marker.addListener('click', () => infoWindow.open(map, marker))
+      marker.addListener('click', function() {
+        // Change content
+        infoWindow.setContent(contentString)
+        
+        // Open infoWindow
+        infoWindow.open(map, marker)
+      })
       return marker
     })
+    this.setState({ markers: mapMarkers})
+    this.setState({ showingLocations: this.state.venues.slice()})
   }
 
   render() {
-    return (
-      <main className="app">
-        <div id="map"></div>
-      </main>
-    );
+    return(
+      // this.state.venues.length &&
+      <div className="App">
+        <Route exact path='/' render={() => (
+            <MainPage
+              venues={this.state.venues}
+              markers={this.state.markers}
+              map={this.state.map}
+              showingLocations={this.state.showingLocations}
+              updateLocations={this.updateLocations}
+            />
+          )}
+        />
+      </div>
+    )
   }
 }
 
