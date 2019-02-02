@@ -76,9 +76,9 @@ class MainPage extends Component {
             <ol className="locations-list">
               {myLocations.map((location) => {
                 return (
-                <li key={location.venue.id} onClick={() => handleClick(location.venue.id)}>
-                  {location.venue.name}
-                </li>
+                  <li key={location.venue.id} onClick={() => handleClick(location.venue.id)}>
+                    {location.venue.name}
+                  </li>
                 )
               })}
             </ol>
