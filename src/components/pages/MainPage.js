@@ -57,11 +57,7 @@ class MainPage extends Component {
       <main className="main-page">
         <div className="container">
         <div className="options-box">
-          <h1>Neighborhood Locations</h1>
-          <div>
-            <input id="show-locations" type="button" value="Show Locations"/>
-            <input id="hide-locations" type="button" value="Hide Locations"/>
-          </div>
+          <h1>Neighborhood Restaurants</h1>
           <hr/>
           <div>
             <input 
