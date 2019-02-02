@@ -22,7 +22,6 @@ class MainPage extends Component {
 
     venues.map(location => {
       const isMatched = location.venue.name.toLowerCase().includes(query.toLowerCase())
-      console.log(`isMatched=${isMatched} ${location.venue.name}`)
       const marker = markers.find(marker => marker.id === location.venue.id)
       if (isMatched) {
         marker.setMap(map)
@@ -32,9 +31,17 @@ class MainPage extends Component {
       return marker
     })
   }
-    
+
+  handleClick = (id) => {
+    const { venues, markers, map, animateMarker, infoWindow } = this.props
+    const marker = markers.find(marker => marker.id === id)
+    const location = venues.find(location => location.venue.id === id)
+    const contentString = `${location.venue.name}<p/>${(location.venue.location.address) || 'Address not available'}`
+    animateMarker(marker, infoWindow, contentString, map)
+  }
+
   render() {
-    const { updateQuery } = this
+    const { updateQuery, handleClick } = this
     const { query } = this.state
     const { showingLocations } = this.props
 
@@ -67,8 +74,12 @@ class MainPage extends Component {
           </div>
           <div>
             <ol className="locations-list">
-              {myLocations.map((location, i) => {
-                return <li key={i}>{location.venue.name}</li>
+              {myLocations.map((location) => {
+                return (
+                <li key={location.venue.id} onClick={() => handleClick(location.venue.id)}>
+                  {location.venue.name}
+                </li>
+                )
               })}
             </ol>
           </div>

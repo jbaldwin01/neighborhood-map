@@ -9,7 +9,8 @@ class App extends Component {
     venues: [],
     markers: [],
     showingLocations: [],
-    map: null
+    map: null,
+    infoWindow: null
   }
 
   componentDidMount() {
@@ -34,8 +35,6 @@ class App extends Component {
     let query = "restaurants"
     fetch(`${endpoint}v=20180323&client_id=${client_id}&client_secret=${client_secret}&near=${near}&query=${query}`)
     .then(response => response.json())
-    // .then(data => console.log(data))
-    // .then(data => console.log(data.response.groups[0].items.map(item => item.venue.name)))
     .then(data => {
       this.setState({
         venues: data.response.groups[0].items
@@ -53,6 +52,8 @@ class App extends Component {
   }
 
   initMap = () => {
+    const { animateMarker } = this
+    const { venues } = this.state
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: 41.7658, lng: -72.6734},
       zoom: 13
@@ -62,29 +63,36 @@ class App extends Component {
     const infoWindow = new window.google.maps.InfoWindow()
     
     // Add location markers to the map
-    let mapMarkers = this.state.venues.map(mapVenue => {
+    let mapMarkers = venues.map(mapVenue => {
       let contentString = `${mapVenue.venue.name}<p/>${(mapVenue.venue.location.address) || 'Address not available'}`
       
       let marker = new window.google.maps.Marker({
         id: mapVenue.venue.id,
         position: {lat: mapVenue.venue.location.lat, lng: mapVenue.venue.location.lng},
         title: mapVenue.venue.name,
+        animation: window.google.maps.Animation.DROP,
         map: map
       })
 
       // Marker clicked
-      // marker.addListener('click', () => infoWindow.open(map, marker))
-      marker.addListener('click', function() {
-        // Change content
-        infoWindow.setContent(contentString)
-        
-        // Open infoWindow
-        infoWindow.open(map, marker)
-      })
+      marker.addListener('click', () => animateMarker(marker, infoWindow, contentString, map))
       return marker
     })
-    this.setState({ markers: mapMarkers})
-    this.setState({ showingLocations: this.state.venues.slice()})
+    this.setState({ markers: mapMarkers })
+    this.setState({ showingLocations: venues.slice() })
+    this.setState({ infoWindow: infoWindow })
+  }
+
+  animateMarker = (marker, infoWindow, contentString, map) => {
+    // Animiate marker when clicked
+     marker.setAnimation(window.google.maps.Animation.BOUNCE); // Bounce marker
+     marker.setAnimation(null) // Stop bounce
+
+    // Change infoWindow content
+    infoWindow.setContent(contentString)
+    
+    // Open infoWindow
+    infoWindow.open(map, marker)
   }
 
   render() {
@@ -98,6 +106,8 @@ class App extends Component {
               map={this.state.map}
               showingLocations={this.state.showingLocations}
               updateLocations={this.updateLocations}
+              animateMarker={this.animateMarker}
+              infoWindow={this.state.infoWindow}
             />
           )}
         />
