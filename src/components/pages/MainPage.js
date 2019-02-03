@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import escapeRegexp from 'escape-string-regexp'
+import Header from '../Header.js'
+import ListView from '../ListView.js'
+import Map from '../Map.js'
 
 class MainPage extends Component {
   state = {
@@ -42,7 +45,6 @@ class MainPage extends Component {
 
   render() {
     const { updateQuery, handleClick } = this
-    const { query } = this.state
     const { showingLocations } = this.props
 
     let myLocations
@@ -53,35 +55,15 @@ class MainPage extends Component {
     }
 
     return (
-      showingLocations &&
       <main className="main-page">
+        <Header />
         <div className="container">
-        <div className="options-box">
-          <h1>Neighborhood Restaurants</h1>
-          <hr/>
-          <div>
-            <input
-              aria-label="Filter locations"
-              id="places-search"
-              type="search"
-              placeholder="Enter restaurant name"
-              value={query}
-              onChange={(event) => updateQuery(event.target.value)}
-            />
-          </div>
-          <div>
-            <ul className="locations-list">
-              {myLocations.map((location) => {
-                return (
-                  <li key={location.venue.id} onClick={() => handleClick(location.venue.id)}>
-                    {location.venue.name}
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
-        <div id="map" role="application"></div>
+          <ListView
+            myLocations={myLocations}
+            updateQuery = {updateQuery}
+            handleClick = {handleClick}
+          />
+          <Map />
         </div>
       </main>
     )
