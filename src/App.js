@@ -31,9 +31,10 @@ class App extends Component {
     const endpoint = "https://api.foursquare.com/v2/venues/explore?"
     const client_id = "FDAMFVN2CLVPRFZSHTJCWLYP34V0FZ1U2N0EU3TO4QUDMBHZ"
     const client_secret = "1I1TBKGC1CI5Z5LMTCJJRUCFLK5AWPANS4QHHEGMDQXEMJWY"
-    let near = "Hartford"
-    let query = "restaurants"
-    fetch(`${endpoint}v=20180323&client_id=${client_id}&client_secret=${client_secret}&near=${near}&query=${query}`)
+    const near = "Hartford"
+    const query = "live music"
+    const limit = 12
+    fetch(`${endpoint}v=20180323&client_id=${client_id}&client_secret=${client_secret}&near=${near}&query=${query}&limit=${limit}`)
     .then(response => response.json())
     .then(data => {
       this.setState({
@@ -97,7 +98,6 @@ class App extends Component {
 
   render() {
     return(
-      // this.state.venues.length &&
       <div className="App">
         <Route exact path='/' render={() => (
             <MainPage
