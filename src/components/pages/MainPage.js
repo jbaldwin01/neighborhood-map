@@ -60,8 +60,8 @@ class MainPage extends Component {
           <h1>Neighborhood Restaurants</h1>
           <hr/>
           <div>
-            <label htmlFor="places-search">Filter Locations</label>
-            <input 
+            <input
+              aria-label="Filter locations"
               id="places-search"
               type="search"
               placeholder="Enter restaurant name"
@@ -70,7 +70,7 @@ class MainPage extends Component {
             />
           </div>
           <div>
-            <ol className="locations-list">
+            <ul className="locations-list">
               {myLocations.map((location) => {
                 return (
                   <li key={location.venue.id} onClick={() => handleClick(location.venue.id)}>
@@ -78,7 +78,7 @@ class MainPage extends Component {
                   </li>
                 )
               })}
-            </ol>
+            </ul>
           </div>
         </div>
         <div id="map" role="application"></div>
