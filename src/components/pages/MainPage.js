@@ -60,12 +60,13 @@ class MainPage extends Component {
           <h1>Neighborhood Restaurants</h1>
           <hr/>
           <div>
+            <label htmlFor="places-search">Filter Locations</label>
             <input 
-              id="places-search" 
-              type="search" 
-              placeholder="Filter locations"
+              id="places-search"
+              type="search"
+              placeholder="Enter restaurant name"
               value={query}
-              onChange={(event) => updateQuery(event.target.value)} 
+              onChange={(event) => updateQuery(event.target.value)}
             />
           </div>
           <div>
@@ -80,7 +81,7 @@ class MainPage extends Component {
             </ol>
           </div>
         </div>
-        <div id="map"></div>
+        <div id="map" role="application"></div>
         </div>
       </main>
     )
