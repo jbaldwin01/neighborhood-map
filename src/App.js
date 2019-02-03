@@ -57,7 +57,7 @@ class App extends Component {
     const { venues } = this.state
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: 41.7658, lng: -72.6734},
-      zoom: 13
+      zoom: 12
     })
     this.setState({ map })
 
