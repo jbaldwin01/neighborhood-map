@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 class Map extends Component {
   render () {
+    const { showListView } = this.props
     return (
-      <div id="map" role="application"></div>
+      <div id="map" role="application" className={(showListView === true) ? "map push" : "map"}></div>
     )
   }
 }

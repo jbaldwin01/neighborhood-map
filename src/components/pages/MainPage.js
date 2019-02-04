@@ -3,10 +3,12 @@ import escapeRegexp from 'escape-string-regexp'
 import Header from '../Header.js'
 import ListView from '../ListView.js'
 import Map from '../Map.js'
+import image from '../../images/powered-by-foursquare-blue.png'
 
 class MainPage extends Component {
   state = {
-    query: ''
+    query: '',
+    showListView: true
   }
   filteredLocations = []
 
@@ -36,16 +38,23 @@ class MainPage extends Component {
   }
 
   handleClick = (id) => {
+    // this.toggleListView()
     const { venues, markers, map, animateMarker, infoWindow } = this.props
     const marker = markers.find(marker => marker.id === id)
     const location = venues.find(location => location.venue.id === id)
-    const contentString = `${location.venue.name}<p/>${(location.venue.location.address) || 'Address not available'}`
+    const contentString = `${location.venue.name}<p/>${(location.venue.location.address) || 'Address not available'}<p/><img class="fourSquare-image" src=${image} alt="Powered by Foursquare">`
     animateMarker(marker, infoWindow, contentString, map)
   }
 
+  toggleListView = () => {
+    const isVisible = this.state.showListView === false ? true : false
+    this.setState({ showListView: isVisible })
+  }
+
   render() {
-    const { updateQuery, handleClick } = this
+    const { updateQuery, handleClick, toggleListView } = this
     const { showingLocations } = this.props
+    const { showListView } = this.state
 
     let myLocations
     if (showingLocations.length > 0) {
@@ -56,14 +65,19 @@ class MainPage extends Component {
 
     return (
       <main className="main-page">
-        <Header />
+        <Header
+          toggleListView={toggleListView}
+        />
         <div className="container">
           <ListView
             myLocations={myLocations}
-            updateQuery = {updateQuery}
-            handleClick = {handleClick}
+            updateQuery={updateQuery}
+            handleClick={handleClick}
+            showListView={showListView}
           />
-          <Map />
+          <Map 
+            showListView={showListView}
+          />
         </div>
       </main>
     )

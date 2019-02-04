@@ -64,16 +64,21 @@ h1 {
 hr {
   background: #D0D7D9;
   height: 1px;
-  margin: 20px 0 20px 0;
+  margin: 0px;
   border: none;
 }
 
-#map {
+.map {
   bottom:0px;
   height: 90vh;
-  width: 65vw;
+  width: 100vw;
   position: absolute;
-  right: 0px;
+  /* right: 0px; */
+  /* margin-left: 0px; */
+}
+
+.map.push {
+  margin-left: 35vw;
 }
 
 .options-box {
@@ -83,8 +88,8 @@ hr {
   width: 33vw;
 
   /* This trasform moves the drawer off canvas. */
-  -webkit-transform: translate(-300px, 0);
-  transform: translate(-300px, 0);
+  -webkit-transform: translate(-340px, 0);
+  transform: translate(-340px, 0);
   /* Optionally, we animate the drawer. */
   transition: transform 0.3s ease;
 }
@@ -117,6 +122,7 @@ hr {
 #places-search {
   height: 2rem;
   font-size: 1rem;
+  width: 30vw;
 }
 
 .text {
@@ -137,22 +143,6 @@ hr {
   width: 24%;
 }
 
-.nav {
-  z-index: 10;
-  background-color: #fff;
-  width: 300px;
-  position: absolute;
-  /* This trasform moves the drawer off canvas. */
-  -webkit-transform: translate(-300px, 0);
-  transform: translate(-300px, 0);
-  /* Optionally, we animate the drawer. */
-  transition: transform 0.3s ease;
-}
-.nav.open {
-  -webkit-transform: translate(0, 0);
-  transform: translate(0, 0);
-}
-
 .header-menu {
   display: inline-block;
   position: absolute;
@@ -165,6 +155,30 @@ hr {
   cursor: pointer;
 }
 
-@media screen and (max-width: 610px) {
+.fourSquare-image {
+  width: 150px;
+}
 
+@media screen and (max-width: 414px) {
+  h1 {
+    font-size: 16px;
+  }
+
+  .options-box.open {
+    width: 65vw;
+    line-height: 20px;
+  }
+
+  .map.push {
+    margin-left: 65vw;
+  }
+
+  .locations-list li {
+    font-size: 1rem;
+    margin-top: .5rem;
+  }
+
+  #places-search {
+    width: 58vw;
+  }
 }
