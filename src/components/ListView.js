@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 
 class ListView extends Component {
   render() {
-    const { myLocations, query, updateQuery, handleClick } = this.props
+    const { myLocations, updateQuery, handleClick } = this.props
     return (
       myLocations &&
-      <div className="options-box">
+      <div className="options-box open">
         <div>
           <input
             aria-label="Filter locations"
