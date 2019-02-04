@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import MainPage from './components/pages/MainPage'
-import './App.css';
+import './App.css'
+import  image from './images/powered-by-foursquare-blue.png'
 
 class App extends Component {
 
@@ -65,7 +66,7 @@ class App extends Component {
     
     // Add location markers to the map
     let mapMarkers = venues.map(mapVenue => {
-      let contentString = `${mapVenue.venue.name}<p/>${(mapVenue.venue.location.address) || 'Address not available'}`
+      let contentString = `${mapVenue.venue.name}<p/>${mapVenue.venue.location.address || 'Address not available'}<p/><img class="fourSquare-image" src=${image} alt="Powered by Foursquare">`
       
       let marker = new window.google.maps.Marker({
         id: mapVenue.venue.id,
