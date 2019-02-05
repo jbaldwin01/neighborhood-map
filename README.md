@@ -1,4 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Neighborhood Map Project
+
+This is the final project for the Udacity Front-End Web Developer Nanodegree.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+and uses the following APIs:
+* [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial).
+* [FOURSQUARE Places API](https://developer.foursquare.com/docs).
+
+## Project Specifications
+[Project Rubric](https://review.udacity.com/#!/rubrics/1351/view)
 
 ## Available Scripts
 
@@ -42,6 +52,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+To learn how to use Google Maps, check out the [Google Maps Platform Documentation](https://developers.google.com/maps/documentation/).
+
+To learn how to use FOURSQUARE, check out the [FOURSQUARE Developer Documentation](https://developer.foursquare.com/docs).
 
 ### Code Splitting
 
