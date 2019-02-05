@@ -102,20 +102,17 @@ class App extends Component {
 
   render() {
     return(
-      <div className="App">
-        <Route exact path='/' render={() => (
-            <MainPage
-              venues={this.state.venues}
-              markers={this.state.markers}
-              map={this.state.map}
-              showingLocations={this.state.showingLocations}
-              updateLocations={this.updateLocations}
-              animateMarker={this.animateMarker}
-              infoWindow={this.state.infoWindow}
-            />
-          )}
+      <Route exact path='/' render={() => (
+        <MainPage
+          venues={this.state.venues}
+          markers={this.state.markers}
+          map={this.state.map}
+          showingLocations={this.state.showingLocations}
+          updateLocations={this.updateLocations}
+          animateMarker={this.animateMarker}
+          infoWindow={this.state.infoWindow}
         />
-      </div>
+      )}/>
     )
   }
 }

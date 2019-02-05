@@ -5,28 +5,24 @@ class ListView extends Component {
     const { myLocations, updateQuery, handleClick, showListView } = this.props
     return (
       myLocations &&
-      <div className={(showListView === true) ? "options-box open" : "options-box"}>
-        <div>
-          <input
-            aria-label="Filter locations"
-            id="places-search"
-            type="search"
-            placeholder="Enter restaurant name"
-            onChange={(event) => updateQuery(event.target.value)}
-          />
-        </div>
-        <div>
-          <ul className="locations-list">
-            {myLocations.map((location) => {
-              return (
-                <li key={location.venue.id} onClick={() => handleClick(location.venue.id)}>
-                  {location.venue.name}
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      </div>
+      <section className={(showListView === true) ? "options-box open" : "options-box"}>
+        <input
+          aria-label="Filter locations"
+          id="places-search"
+          type="search"
+          placeholder="Enter restaurant name"
+          onChange={(event) => updateQuery(event.target.value)}
+        />
+        <ul className="locations-list">
+          {myLocations.map((location) => {
+            return (
+              <li key={location.venue.id} onClick={() => handleClick(location.venue.id)}>
+                {location.venue.name}
+              </li>
+            )
+          })}
+        </ul>
+      </section>
     )
   }
 }

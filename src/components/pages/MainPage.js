@@ -66,22 +66,20 @@ class MainPage extends Component {
     }
 
     return (
-      <main className="main-page">
+      <section className="main-page">
         <Header
           toggleListView={toggleListView}
         />
-        <div className="container">
-          <ListView
-            myLocations={myLocations}
-            updateQuery={updateQuery}
-            handleClick={handleClick}
-            showListView={showListView}
-          />
-          <Map 
-            showListView={showListView}
-          />
-        </div>
-      </main>
+        <ListView
+          myLocations={myLocations}
+          updateQuery={updateQuery}
+          handleClick={handleClick}
+          showListView={showListView}
+        />
+        <Map 
+          showListView={showListView}
+        />
+      </section>
     )
   }
 }

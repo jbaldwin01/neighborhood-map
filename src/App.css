@@ -1,21 +1,8 @@
-.App {
-  height: 100vh;
-  width: 100vw;
-  text-align: center;
-  display: flex;
-  flex-flow: row nowrap
-}
-
 /* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-.container {
-  height: 100%;
-  /* position: relative; */
 }
 
 header {
