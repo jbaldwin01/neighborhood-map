@@ -18,6 +18,7 @@ class App extends Component {
     this.getVenues()
   }
 
+  // Update state with filtered locations
   updateLocations = (showingLocations) => {
     this.setState({ showingLocations })
   }
@@ -53,6 +54,7 @@ class App extends Component {
     window.initMap = this.initMap
   }
 
+  // Initialize the map
   initMap = () => {
     const { animateMarker } = this
     const { venues } = this.state
@@ -85,6 +87,7 @@ class App extends Component {
     this.setState({ infoWindow: infoWindow })
   }
 
+  // Bounce marker and open infoWindow
   animateMarker = (marker, infoWindow, contentString, map) => {
     // Animiate marker when clicked
      marker.setAnimation(window.google.maps.Animation.BOUNCE); // Bounce marker

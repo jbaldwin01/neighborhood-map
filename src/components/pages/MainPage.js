@@ -12,6 +12,7 @@ class MainPage extends Component {
   }
   filteredLocations = []
 
+  // Filter locations using text input
   updateQuery = (query) => {
     const { venues, updateLocations, markers, map } = this.props
     this.setState({ query: query })
@@ -37,8 +38,8 @@ class MainPage extends Component {
     })
   }
 
+  // List view item clicked
   handleClick = (id) => {
-    // this.toggleListView()
     const { venues, markers, map, animateMarker, infoWindow } = this.props
     const marker = markers.find(marker => marker.id === id)
     const location = venues.find(location => location.venue.id === id)
@@ -46,6 +47,7 @@ class MainPage extends Component {
     animateMarker(marker, infoWindow, contentString, map)
   }
 
+  // Show/hide the list view
   toggleListView = () => {
     const isVisible = this.state.showListView === false ? true : false
     this.setState({ showListView: isVisible })
