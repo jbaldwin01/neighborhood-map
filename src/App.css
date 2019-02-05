@@ -6,35 +6,6 @@
   flex-flow: row nowrap
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
@@ -114,11 +85,6 @@ hr {
   background: paleturquoise;
 }
 
-#pano {
-  width: 200px;
-  height: 200px;
-}
-
 #places-search {
   height: 2rem;
   font-size: 1rem;
@@ -127,20 +93,6 @@ hr {
 
 .text {
   font-size: 12px;
-}
-
-#toggle-drawing {
-  width: 27%;
-  position: relative;
-  margin-left: 10px;
-}
-
-#zoom-to-area-text {
-  width: 70%;
-}
-
-#zoom-to-area {
-  width: 24%;
 }
 
 .header-menu {
@@ -159,7 +111,7 @@ hr {
   width: 150px;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 550px) {
   h1 {
     font-size: 16px;
   }
