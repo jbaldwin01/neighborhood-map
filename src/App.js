@@ -43,7 +43,9 @@ class App extends Component {
         venues: data.response.groups[0].items
       },this.renderMap()) // set renderMap() as callback function
     })
-    .catch(error => {console.log(`ERROR: ${error}`)})
+    .catch(error => {
+      window.alert("Sorry!!!  Something went wrong.  This page didn't load Foursquare location data correctly.  See the JavaScript console for technical details.")
+    })
   }
 
   /*
@@ -128,6 +130,18 @@ function loadMapAPI(url) {
   script.async = true
   script.defer = true
   index.parentNode.insertBefore(script, index)
+  script.onerror = () => {
+    window.alert("Sorry!!!  Something went wrong.  This page didn't load Google Maps correctly.  See the JavaScript console for technical details.")
+  }
+}
+
+/*
+ * Listen for Google Maps authentication errors.
+ * This will be called if authentication fails.
+ * https://developers.google.com/maps/documentation/javascript/events
+ */
+window.gm_authFailure = () => {
+  window.alert("Sorry!!!  Something went wrong.  This page didn't load Google Maps correctly.  See the JavaScript console for technical details.")
 }
 
 export default App;
