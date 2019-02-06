@@ -6,7 +6,8 @@ class Header extends Component {
       <header>
         <h1>Neighborhood Restaurants
           <nav 
-            id="menu" 
+            id="menu"
+            tabindex="0"
             className="header-menu"
             onClick={() => this.props.toggleListView()}
             >
