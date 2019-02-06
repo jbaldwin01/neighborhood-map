@@ -17,7 +17,7 @@ class ListView extends Component {
           {myLocations.map((location) => {
             return (
               <li
-                tabindex="0"
+                tabIndex="0"
                 aria-labelledby="locations"
                 key={location.venue.id}
                 onClick={() => handleClick(location.venue.id)}>
