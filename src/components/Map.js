@@ -4,7 +4,11 @@ class Map extends Component {
   render () {
     const { showListView } = this.props
     return (
-      <section id="map" role="application" className={(showListView === true) ? "map push" : "map"}></section>
+      <section 
+        id="map"
+        role="application"
+        className={(showListView === true) ? "map push" : "map"}>
+      </section>
     )
   }
 }
