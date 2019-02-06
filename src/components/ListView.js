@@ -20,6 +20,7 @@ class ListView extends Component {
                 tabIndex="0"
                 aria-labelledby="locations"
                 key={location.venue.id}
+                onKeyPress={(event) => {(event.key === 'Enter') && handleClick(location.venue.id)}}
                 onClick={() => handleClick(location.venue.id)}>
                 {location.venue.name}
               </li>

@@ -9,6 +9,7 @@ class Header extends Component {
             id="menu"
             tabIndex="0"
             className="header-menu"
+            onKeyPress={(event) => (event.key === 'Enter') && this.props.toggleListView()}
             onClick={() => this.props.toggleListView()}
             >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
