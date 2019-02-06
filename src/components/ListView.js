@@ -13,10 +13,14 @@ class ListView extends Component {
           placeholder="Enter restaurant name"
           onChange={(event) => updateQuery(event.target.value)}
         />
-        <ul className="locations-list">
+        <ul id="locations" className="locations-list">
           {myLocations.map((location) => {
             return (
-              <li key={location.venue.id} onClick={() => handleClick(location.venue.id)}>
+              <li
+                tabindex="0"
+                aria-labelledby="locations"
+                key={location.venue.id}
+                onClick={() => handleClick(location.venue.id)}>
                 {location.venue.name}
               </li>
             )
